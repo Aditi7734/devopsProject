@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishi Mitra - Smart Harvesting Solutions</title>
+  <style>
+    /* Global styles */
+    :root {
+      --green: #2f7a32;
+      --light-green: #d7f1d8;
+      --dark: #142a16;
+      --white: #ffffff;
+      --shadow: 0 15px 40px rgba(20, 42, 22, 0.14);
+      --transition: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7fbf5;
+      color: #1f3f24;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Header and navigation */
+    header {
+      background: linear-gradient(135deg, rgba(47,122,50,0.95), rgba(27,85,33,0.95));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .brand span {
+      color: #c7f0b0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: #c7f0b0;
+    }
+
+    .navbar button {
+      background: #c7f0b0;
+      color: #142a16;
+      padding: 0.75rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .navbar button:hover {
+      transform: translateY(-2px);
+      background: #e5f8d9;
+    }
+
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 4vw, 4.4rem);
+      margin-bottom: 1rem;
+      line-height: 1.05;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      animation: glow 2.5s ease-in-out infinite alternate;
+      color: #eef7e9;
+    }
+
+    .hero p {
+      margin-bottom: 2rem;
+      color: #e8f1e7;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+      padding: 0.9rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #1f3f24;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.85);
+      color: #ffffff;
+    }
+
+    .hero-buttons .btn-primary:hover,
+    .hero-buttons .btn-secondary:hover {
+      transform: translateY(-3px);
+      opacity: 0.95;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(196,230,193,0.95), rgba(180,219,172,0.96));
+    }
+
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 35%);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.95;
+    }
+
+    /* Section styling */
+    section {
+      padding: 3rem 1.5rem;
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 2.5vw, 3rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-header p {
+      color: #4b683a;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px rgba(20, 42, 22, 0.16);
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #53674b;
+      margin-bottom: 1.1rem;
+    }
+
+    .card button {
+      background: var(--green);
+      color: white;
+      padding: 0.85rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin-top: 1rem;
+      color: #4e674c;
+    }
+
+    .service-card li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .service-card li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .booking-form,
+    .contact-form,
+    .login-panel {
+      background: white;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .booking-form h3,
+    .contact-form h3,
+    .login-panel h3 {
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #2c4e2f;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #dbe7d7;
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      font-size: 0.98rem;
+      color: #24382b;
+      background: #f8faf6;
+      transition: border var(--transition), box-shadow var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(47,122,50,0.12);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .form-grid .form-group:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.2rem;
+    }
+
+    .btn-primary-large {
+      background: var(--green);
+      color: white;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .btn-secondary-large {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green);
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .harvester-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .harvester-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #d8e3d3;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      background: #f5fbf3;
+      transition: transform var(--transition);
+    }
+
+    .harvester-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .harvester-item div {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .harvester-item .status {
+      color: #3d773f;
+      font-weight: 700;
+    }
+
+    .success-message {
+      background: #e3f7db;
+      border-left: 5px solid #72af49;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .about-grid p {
+      color: #455a3f;
+    }
+
+    .about-visual {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-visual img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: #f9fcf7;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p,
+    .contact-card address {
+      color: #4b623f;
+      margin-bottom: 0.9rem;
+    }
+
+    footer {
+      background: #142a16;
+      color: #d7e6d3;
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d7e6d3;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-note {
+      width: 100%;
+      margin-top: 1rem;
+      color: #9fae95;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .hero,
+      .services-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-visual {
+        min-height: 3px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Animated tagline effect */
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px rgba(199,240,176,0.7); }
+      100% { text-shadow: 0 0 18px rgba(255,255,255,0.95); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="brand">Krishi <span>Mitra</span></div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button type="button" onclick="toggleAuth('login')">Login / Signup</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="tagline">Empowering Farmers with Smart Harvesting Solutions</p>
+        <h1>Krishi Mitra makes crop harvesting simple and reliable.</h1>
+        <p>Book harvesters, schedule crop cutting, and reach your harvest goals with support from local agricultural specialists. Designed to help farmers grow faster and harvest smarter.</p>
+        <div class="hero-buttons">
+          <a href="#booking" class="btn-primary">Book a Harvester</a>
+          <a href="#services" class="btn-secondary">Explore Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://www.deere.com.au/assets/images/region-4/products/harvesting/cornhead-R4A057928_RRD_1-1920x1080.jpg" alt="Modern combine harvester in field at sunset" />
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>Krishi Mitra connects farmers with trusted harvesters and crop cutting services that are optimized for efficiency and yield.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Harvester Booking</h3>
+          <p>Reserve a modern harvester for your crop type and schedule the ideal harvest window with ease.</p>
+          <button type="button" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+        </div>
+        <div class="card">
+          <h3>Crop Cutting Services</h3>
+          <p>Professional operators handle precise crop cutting to reduce waste and speed up harvesting.</p>
+          <button type="button" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })">Schedule</button>
+        </div>
+        <div class="card">
+          <h3>Local Support</h3>
+          <p>Connect with local experts for field planning, harvest advice, and reliable service every season.</p>
+          <button type="button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contact Us</button>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Book Your Harvester</h3>
+          <p>Choose your crop type, select the date, and book a harvester that fits your field size. Our platform supports a seamless booking flow.</p>
+          <ul>
+            <li>Easy online booking</li>
+            <li>Trusted local harvesters</li>
+            <li>Harvest timing reminders</li>
+          </ul>
+        </div>
+        <div class="booking-form" id="booking">
+          <div class="success-message" id="successMessage">Your booking request was submitted successfully! Our team will contact you shortly.</div>
+          <h3>Harvester Booking Form</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="farmerName">Farmer Name</label>
+              <input type="text" id="farmerName" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" id="location" placeholder="Village or district" />
+            </div>
+            <div class="form-group">
+              <label for="cropType">Crop Type</label>
+              <select id="cropType">
+                <option value="">Select crop</option>
+                <option>Wheat</option>
+                <option>Rice</option>
+                <option>Maize</option>
+                <option>Sugarcane</option>
+                <option>Oilseed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="harvestDate">Harvest Date</label>
+              <input type="date" id="harvestDate" />
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" rows="3" placeholder="Any details to help schedule the service..."></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary-large" type="button" onclick="submitBooking()">Submit Booking</button>
+            <button class="btn-secondary-large" type="button" onclick="clearBookingForm()">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" style="margin-top: 1.5rem;">
+        <h3>Available Harvesters</h3>
+        <div class="harvester-list" id="harvesterList"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-header">
+        <h2>About Us</h2>
+        <p>Krishi Mitra helps farmers access modern agricultural equipment and local expertise for safer, faster harvests.</p>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>Krishi Mitra was created to support farming communities with practical harvesting solutions. Our focus is on making advanced machinery booking accessible and offering a simple digital experience for every farmer.</p>
+          <p>With a green theme inspired by agriculture, our mission is to reduce manual effort, increase productivity, and support rural economies.</p>
+        </div>
+        <div class="about-visual">
+          <img src="https://images.unsplash.com/photo-1513530178041-3cfbcf729f0b?auto=format&fit=crop&w=900&q=80" alt="Farmer with harvester" />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Reach out for support, booking help, or partnering opportunities to bring better harvesting services to your area.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Get in Touch</h3>
+          <p>Krishi Mitra support is available to answer questions about services and booking status.</p>
+          <address>
+            Email: support@krishimitra.example<br />
+            Phone: +91 98765 43210<br />
+            Location: Rural Farming Hub, India
+          </address>
+        </div>
+        <div class="contact-form">
+          <h3>Contact Form</h3>
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="Your email" />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" rows="4" placeholder="How can we assist you?"></textarea>
+          </div>
+          <button class="btn-primary-large" type="button" onclick="submitContact()">Send Message</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Krishi Mitra</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-note">Copyright © 2026 Krishi Mitra. Designed for modern agricultural service booking.</div>
+    </div>
+  </footer>
+
+  <div id="authModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:20; justify-content:center; align-items:center; padding:1rem;">
+    <div style="background:white; border-radius:28px; width:100%; max-width:520px; padding:2rem; position:relative; box-shadow:var(--shadow);">
+      <button type="button" onclick="toggleAuth()" style="position:absolute; top:1rem; right:1rem; background:none; font-size:1.1rem; color:#142a16;">✕</button>
+      <div class="login-panel" style="box-shadow:none; padding:0; margin:0; background:transparent;">
+        <h3 id="authTitle">Login to Krishi Mitra</h3>
+        <div class="form-group">
+          <label for="authEmail">Email</label>
+          <input type="email" id="authEmail" placeholder="Enter your email" />
+        </div>
+        <div class="form-group">
+          <label for="authPassword">Password</label>
+          <input type="password" id="authPassword" placeholder="Enter password" />
+        </div>
+        <div class="form-actions">
+          <button class="btn-primary-large" type="button" onclick="submitAuth()">Submit</button>
+          <button class="btn-secondary-large" type="button" id="authToggleButton" onclick="switchAuthMode()">Switch to Signup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data for harvesters
+    const harvesters = [
+      { name: 'GreenField Harvester', type: 'Wheat', available: 'Today', location: 'Punjab' },
+      { name: 'AgriPro 320', type: 'Rice', available: 'Tomorrow', location: 'Uttar Pradesh' },
+      { name: 'HarvestMate', type: 'Maize', available: '2 Days', location: 'Maharashtra' }
+    ];
+
+    // Render available harvesters
+    const harvesterList = document.getElementById('harvesterList');
+    harvesters.forEach(harvester => {
+      const item = document.createElement('div');
+      item.className = 'harvester-item';
+      item.innerHTML = `
+        <div>
+          <strong>${harvester.name}</strong>
+          <span>${harvester.type} | ${harvester.location}</span>
+        </div>
+        <span class="status">${harvester.available}</span>
+      `;
+      harvesterList.appendChild(item);
+    });
+
+    function submitBooking() {
+      const name = document.getElementById('farmerName').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const crop = document.getElementById('cropType').value;
+      const date = document.getElementById('harvestDate').value;
+      const message = document.getElementById('successMessage');
+
+      if (!name || !location || !crop || !date) {
+        alert('Please fill in all required booking details.');
+        return;
+      }
+
+      // Simulate booking submission and show success message
+      message.style.display = 'block';
+      message.textContent = `Booking confirmed for ${name}. Selected crop: ${crop}. Harvest date: ${date}.`;
+      clearBookingForm(true);
+    }
+
+    function clearBookingForm(isAfterSubmit) {
+      document.getElementById('farmerName').value = '';
+      document.getElementById('location').value = '';
+      document.getElementById('cropType').value = '';
+      document.getElementById('harvestDate').value = '';
+      document.getElementById('notes').value = '';
+      if (!isAfterSubmit) {
+        document.getElementById('successMessage').style.display = 'none';
+      }
+    }
+
+    function submitContact() {
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      if (!name || !email || !message) {
+        alert('Please complete all contact fields.');
+        return;
+      }
+      alert('Thank you for reaching out, ' + name + '! We will respond soon.');
+      document.getElementById('contactName').value = '';
+      document.getElementById('contactEmail').value = '';
+      document.getElementById('contactMessage').value = '';
+    }
+
+    let authMode = 'login';
+    function toggleAuth(mode = '') {
+      const modal = document.getElementById('authModal');
+      if (mode) authMode = mode;
+      modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+      updateAuthText();
+    }
+
+    function switchAuthMode() {
+      authMode = authMode === 'login' ? 'signup' : 'login';
+      updateAuthText();
+    }
+
+    function updateAuthText() {
+      const title = document.getElementById('authTitle');
+      const toggleButton = document.getElementById('authToggleButton');
+      if (authMode === 'login') {
+        title.textContent = 'Login to Krishi Mitra';
+        toggleButton.textContent = 'Switch to Signup';
+      } else {
+        title.textContent = 'Create your Krishi Mitra Account';
+        toggleButton.textContent = 'Switch to Login';
+      }
+    }
+
+    function submitAuth() {
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value.trim();
+      if (!email || !password) {
+        alert('Enter both email and password to continue.');
+        return;
+      }
+      alert(authMode === 'login' ? 'Login successful!' : 'Signup successful!');
+      document.getElementById('authEmail').value = '';
+      document.getElementById('authPassword').value = '';
+      document.getElementById('authModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

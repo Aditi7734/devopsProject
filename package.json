@@ -1,0 +1,23 @@
+{
+  "name": "devops_cicd_webapp_project",
+  "version": "1.0.0",
+  "description": "````markdown\r # DevOps CI/CD Web Application Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aditi7734/devopsProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aditi7734/devopsProject/issues"
+  },
+  "homepage": "https://github.com/Aditi7734/devopsProject#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

@@ -1,11 +1,9 @@
+# Use lightweight Nginx image
 FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
+# Copy your static files into Nginx's default folder
+COPY index.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/
 
-COPY index.html .
-COPY style.css .
-COPY app.js .
-
+# Nginx listens on port 80 inside the container
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
